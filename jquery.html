@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<p class="#test">Click the button to wait 3 seconds, then alert "Hello".</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+
+function myFunction() {
+const $= input => {
+	if(typeof input === 'string' && input.length > 0){
+    	const tokens= input.trim().split('>');
+        let dom=document.getElementsByTagName('body');
+        console.log(tokens);
+        tokens.forEach(each => {
+        	if(each.indexOf('.') === 0 && dom.length>0){ 
+        		dom=dom[0].getElementsByClassName(each.substring(1));
+            }else if(each.indexOf('#') === 0 && dom.length>0){
+            	dom=dom[0].getElementById(each.substring(1));
+            }else if(dom.length>0){
+            	dom=dom[0].getElementsByTagName(each.substring(1));
+            }else{
+            	dom=[];
+            }
+        });
+        return dom;
+    	
+    }else{
+    	console.log("type not supported. Enter a string");
+    }
+};
+	var test= $("#test");
+    console.log(test);
+}
+</script>
+
+</body>
+</html>
